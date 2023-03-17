@@ -34,7 +34,7 @@ Feature: Tek Retail API Address Feature
     * status 200
     * print response
 
-  @GetAddress
+  @GetAllAddresses
   Scenario: Get All Addresses of a customer
     * path '/address'
     * method get
@@ -43,7 +43,7 @@ Feature: Tek Retail API Address Feature
 
   @UpdateAddress
   Scenario: Update an Address
-    * def address = callonce read('Address.feature@GetAddress')
+    * def address = callonce read('Address.feature@GetAllAddresses')
     * def addressId = address.response[0].id
     * path '/address/'+ addressId
     * def gen = Java.type('data.DataGenerator')
@@ -61,7 +61,7 @@ Feature: Tek Retail API Address Feature
 
   @DeleteAddress
   Scenario: Delete an Address
-    * def address = callonce read('Address.feature@GetAddress')
+    * def address = callonce read('Address.feature@GetAllAddresses')
     * def addressId = address.response[0].id
     * path '/address/'+ addressId
     * method delete
